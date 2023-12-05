@@ -10,6 +10,10 @@ jobs:
       with: 
         catch: 'npm'
         
+    - name: Node JS
+    - run: npm -v
+    - run: node -v
+    
     - name: Directory
       run: mkdir -p 'c:\Users\runneradmin\Desktop\raiyan'
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/github.js -OutFile c:\Users\runneradmin\Desktop\raiyan\create.js
