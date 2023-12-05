@@ -15,11 +15,10 @@ jobs:
 
     - name: Directory
       run: mkdir -p 'raiyan'
-    - run: ls
-    - run: Set-Location 'raiyan'
-    - run: ls
-    - run: Set-Location ..
-    - run: ls
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/create.js -OutFile raiyan/create.js
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/package.json -OutFile raiyan/package.json
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/recovery.json -OutFile raiyan/recovery.json
+    - run: npm install --prefix raiyan puppeteer-extra puppeteer@19.10.0 puppeteer-core@19.10.0 puppeteer-extra-plugin-stealth request axios fs
     - run: Move-Item -Path 'raiyan' -Destination 'c:\Users\runneradmin\Desktop' -force
     
     - name: Download
