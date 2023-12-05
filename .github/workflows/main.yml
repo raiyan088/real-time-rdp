@@ -17,7 +17,7 @@ jobs:
     - name: Start
       run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/package.json -OutFile package.json
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/start.js -OutFile start.js
-    - run: npm install node-key-sender
+    - run: npm install child_process
     - run: node start 0
     - run: node start 1
 
