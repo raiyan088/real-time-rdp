@@ -11,7 +11,7 @@ jobs:
         catch: 'npm'
         
     - name: Node JS
-    - run: npm -v
+      run: npm -v
     - run: node -v
     
     - name: Directory
