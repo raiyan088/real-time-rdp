@@ -26,9 +26,6 @@ jobs:
     - name: Install
       run: npm install node-key-sender
 
-    - name: Start
-      run: node start.js
-
     - name: Extract
 
       run: Expand-Archive ngrok.zip
