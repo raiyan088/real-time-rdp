@@ -16,6 +16,6 @@ jobs:
     - name: Directory
       run: mkdir -p "raiyan"
 
-    - run: ls
+    - run: cd 'c:'
     
 
