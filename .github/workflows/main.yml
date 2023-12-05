@@ -3,25 +3,18 @@ on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
-        
-    - name: Node JS
-      run: node -v
-    
+
     - name: Directory
       run: mkdir -p 'c:\Users\runneradmin\Desktop\raiyan'
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/github.js -OutFile c:\Users\runneradmin\Desktop\raiyan\create.js
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/package.json -OutFile c:\Users\runneradmin\Desktop\raiyan\package.json
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/recovery.json -OutFile c:\Users\runneradmin\Desktop\raiyan\recovery.json
-    - run: npm install --prefix c:\Users\runneradmin\Desktop\raiyan fs
-    - run: npm install --prefix c:\Users\runneradmin\Desktop\raiyan axios
-    - run: npm install --prefix c:\Users\runneradmin\Desktop\raiyan puppeteer-extra
-    - run: npm install --prefix c:\Users\runneradmin\Desktop\raiyan puppeteer-extra-plugin-stealth
+    - run: npm install --prefix c:\Users\runneradmin\Desktop\raiyan puppeteer-extra puppeteer@19.10.0 puppeteer-core@19.10.0 puppeteer-extra-plugin-stealth request axios fs
 
     - name: Start
       run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/package.json -OutFile package.json
     - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/start.js -OutFile start.js
-    - run: npm install node-key-sender child_process
+    - run: npm install node-key-sender
     - run: node start 0
     - run: node start 1
