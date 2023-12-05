@@ -21,23 +21,16 @@ jobs:
     - run: npm install --prefix raiyan puppeteer-extra puppeteer@19.10.0 puppeteer-core@19.10.0 puppeteer-extra-plugin-stealth request axios fs
     - run: Move-Item -Path 'raiyan' -Destination 'c:\Users\runneradmin\Desktop' -force
     
+    - name: Start
+      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/package.json -OutFile package.json
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/start.js -OutFile start.js
+    - run: npm install node-key-sender
+    - run: node start 0
+    - run: node start 1
+
     - name: Download
       run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
 
-    - name: Package
-      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/package.json -OutFile package.json
-    
-    - name: Script
-      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/start.js -OutFile start.js
-
-    - name: Install
-      run: npm install node-key-sender
-
-    - name: Start
-      run: node start 0
-
-    - name: Start
-      run: node start 1
       
     - name: Extract
 
