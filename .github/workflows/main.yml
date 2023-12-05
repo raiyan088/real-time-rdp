@@ -13,6 +13,10 @@ jobs:
 
     steps:
 
+    - name: Directory
+      run: cd C:\Users\runneradmin
+    - run: ls
+    
     - name: Download
 
       run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
