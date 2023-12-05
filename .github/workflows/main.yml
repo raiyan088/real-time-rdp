@@ -16,6 +16,6 @@ jobs:
     - name: Directory
       run: mkdir -p "raiyan"
 
-    - run: cd 'c:'
+    - run: Move-Item -Path 'd:\a\real-time-rdp\real-time-rdp\raiyan' -Destination 'c:\Users\runneradmin\Desktop' -force
     
 
