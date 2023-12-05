@@ -14,8 +14,7 @@ jobs:
     steps:
 
     - name: Directory
-      run: cd C:\Users\runneradmin
-    - run: ls
+      run: ls
     
     - name: Download
 
