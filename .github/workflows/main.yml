@@ -2,41 +2,11 @@ name: CI
 on: [push, workflow_dispatch]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
 
-    - name: Install
-      run: Invoke-WebRequest -Uri https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win10.exe -OutFile openvpninstaller.exe
-    - run: Invoke-WebRequest -Uri https://swupdate.openvpn.org/community/releases/OpenVPN-2.6.8-I001-amd64.msi -OutFile openvpninstaller.msi
-    
-      
-    - name: Download
-      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-
-      
-    - name: Extract
-
-      run: Expand-Archive ngrok.zip
-
-    - name: Auth
-
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-
-      env:
-
-        NGROK_AUTH_TOKEN: '2YMpPG6ws3Y1x5unwwSlUNVs3Wu_67JPAFd2MmxAo7cBVK7Lq'
-
-    - name: Enable TS
-
-      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-
-    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-
-    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-
-    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-
-    - name: Create Tunnel
-
-      run: .\ngrok\ngrok.exe tcp 3389
-
+    - name: Command
+      run: wget https://raw.githubusercontent.com/raiyan088/public/main/jp.ovpn
+    - run: sudo apt update
+    - run: sudo apt install openvpn -y
+    - run: sudo openvpn --connect jp.ovpn
