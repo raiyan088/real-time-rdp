@@ -9,4 +9,4 @@ jobs:
       run: wget https://raw.githubusercontent.com/raiyan088/public/main/jp.ovpn
     - run: sudo apt update
     - run: sudo apt install openvpn -y
-    - run: sudo openvpn --connect jp.ovpn
+    - run: sudo openvpn --version
