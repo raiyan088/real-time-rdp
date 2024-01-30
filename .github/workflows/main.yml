@@ -5,12 +5,6 @@ jobs:
     runs-on: windows-latest
     steps:
 
-    - name: Start
-      run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/montag/node_modules.zip -OutFile start.zip
-    - run: Expand-Archive -LiteralPath start.zip
-    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/montag/server.js -OutFile start\server.js
-    - run: Invoke-WebRequest https://raw.githubusercontent.com/raiyan088/public/main/montag/start.js -OutFile start\start.js
-    - run: node start/start.js 0
     
       
     - name: Download
