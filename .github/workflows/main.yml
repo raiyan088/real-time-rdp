@@ -9,9 +9,6 @@ jobs:
     - name: Download
       run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
 
-    - name: Download
-      run: Invoke-WebRequest https://a11.gdl.netease.com/MuMuInstaller_1.3.0.2_gw-offline-x86_all_1636101141.exe -OutFile Emulator.exe
-    
     - name: Extract
       run: Expand-Archive ngrok.zip
 
