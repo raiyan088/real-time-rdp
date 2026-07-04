@@ -2,7 +2,7 @@ name: CI
 on: [push, workflow_dispatch]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
     
     
